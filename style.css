@@ -1,0 +1,168 @@
+:root {
+    --primary-color: #6a11cb;
+    --secondary-color: #2e79fa;
+    --text-color: #f4f4f4;
+    --bg-color: #121212;
+    --card-bg: rgba(255, 255, 255, 0.08);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --success-color: #4CAF50;
+    --error-color: #f44336;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    color: var(--text-color);
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), #b82aff, #11cb9c);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 2rem;
+}
+
+.form-container, .members-container {
+    background: var(--card-bg);
+    padding: 2.5rem;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+h1, h2 {
+    text-align: center;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+p {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: 300;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px 0;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--border-color);
+    outline: none;
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+.input-group label {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.input-group input:focus + label,
+.input-group input:valid + label {
+    top: -15px;
+    left: 0;
+    font-size: 0.8rem;
+    color: var(--secondary-color);
+}
+
+button {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+#statusMessage {
+    text-align: center;
+    margin-top: 1rem;
+    font-weight: 600;
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+    max-height: 70vh;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.member-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeIn 0.5s ease forwards;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+.member-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.member-card h3 {
+    margin: 0 0 0.5rem 0;
+    color: var(--secondary-color);
+}
+
+.member-card p {
+    margin: 0.2rem 0;
+    text-align: left;
+    font-size: 0.9rem;
+    word-break: break-all;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--secondary-color); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--primary-color); }
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+}
